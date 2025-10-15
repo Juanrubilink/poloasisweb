@@ -33,7 +33,7 @@ export default function Products() {
     {
       name: 'Polo Water Tank',
       category: 'Tangki Air Premium',
-      description: 'Tangki air berkualitas tinggi dengan desain ergonomis dan material tahan lama. Dilengkapi dengan teknologi anti-lumut dan UV protection untuk menjaga kualitas air tetap bersih.',
+      description: 'Tangki air berkualitas tinggi dengan desain ergonomis dan material tahan lama. Dilengkapi dengan teknologi tahan lumut dan UV protection untuk menjaga kualitas air tetap bersih.',
       features: ['Anti-Lumut', 'UV Protection', 'Food Grade Material'],
       capacity: '250L - 5250L',
       icon: Droplet,
@@ -42,7 +42,7 @@ export default function Products() {
     {
       name: 'Oasis Water Tank',
       category: 'Tangki Air Industrial',
-      description: 'Solusi penyimpanan air untuk kebutuhan industrial dan komersial. Konstruksi kokoh dengan kapasitas besar dan sistem ventilasi optimal untuk sirkulasi udara yang baik.',
+      description: 'Solusi penyimpanan air untuk kebutuhan industrial dan komersial. Konstruksi kokoh dengan kapasitas besar dan sistem penyimpanan optimal bahkan baik digunakan untuk penyimpanan cairan kimia.',
       features: ['High Capacity', 'Reinforced Structure', 'Weather Resistant'],
       capacity: '250L - 5250L',
       icon: Layers,
@@ -96,26 +96,52 @@ export default function Products() {
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
           {products.map((product, index) => {
             const Icon = product.icon;
+            const isActive = activeProduct === index; // ✅ use activeProduct here
             return (
               <div
                 key={product.name}
-                className={`group relative transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                className={`group relative transition-all duration-1000 ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
                 style={{ transitionDelay: `${300 + index * 150}ms` }}
                 onMouseEnter={() => setActiveProduct(index)}
+                onMouseLeave={() => setActiveProduct(-1)} // optional reset when mouse leaves
               >
                 {/* Card */}
-                <div className="relative h-full border border-gray-200 bg-white hover:border-gray-900 transition-all duration-500 overflow-hidden">
+                <div
+                  className={`relative h-full border ${
+                    isActive ? 'border-gray-900 shadow-xl scale-[1.02]' : 'border-gray-200'
+                  } bg-white hover:border-gray-900 transition-all duration-500 overflow-hidden`}
+                >
                   {/* Image */}
                   <div className="relative h-64 lg:h-80 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="text-gray-400 text-center">
-                        <Icon size={48} strokeWidth={1} className="mx-auto mb-4 text-gray-300" />
-                        <p className="text-sm font-light">{product.name}</p>
+                        <Icon
+                          size={48}
+                          strokeWidth={1}
+                          className={`mx-auto mb-4 ${
+                            isActive ? 'text-gray-800' : 'text-gray-300'
+                          } transition-colors duration-500`}
+                        />
+                        <p
+                          className={`text-sm font-light ${
+                            isActive ? 'text-gray-900' : 'text-gray-600'
+                          } transition-colors duration-500`}
+                        >
+                          {product.name}
+                        </p>
                       </div>
                     </div>
-                    
+
                     {/* Gradient Overlay on Hover */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-red-300/0 to-blue-500/0 via-purple-500/0 group-hover:from-red-300/10 group-hover:to-blue-500/10 group-hover:via-purple-500/10 transition-all duration-700"></div>
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br transition-all duration-700 ${
+                        isActive
+                          ? 'from-red-300/10 to-blue-500/10 via-purple-500/10'
+                          : 'from-red-300/0 to-blue-500/0 via-purple-500/0'
+                      }`}
+                    ></div>
                   </div>
 
                   {/* Content */}
@@ -129,7 +155,7 @@ export default function Products() {
                     <h3 className="text-2xl font-light text-gray-900 mb-4 tracking-wide">
                       {product.name}
                     </h3>
-                    
+
                     {/* Description */}
                     <p className="text-sm font-light text-gray-600 leading-relaxed mb-6">
                       {product.description}
@@ -146,25 +172,24 @@ export default function Products() {
                       {product.features.map((feature) => (
                         <span
                           key={feature}
-                          className="px-3 py-1 text-xs font-light tracking-wide text-gray-700 border border-gray-200 bg-gray-50"
+                          className={`px-3 py-1 text-xs font-light tracking-wide border ${
+                            isActive
+                              ? 'text-gray-900 border-gray-400 bg-gray-50'
+                              : 'text-gray-700 border-gray-200 bg-gray-50'
+                          }`}
                         >
                           {feature}
                         </span>
                       ))}
                     </div>
-
-                    {/* CTA Link */}
-                    {/* <a
-                      href="#contact"
-                      className="inline-flex items-center text-sm font-light tracking-wide text-gray-900 group-hover:text-gray-600 transition-colors"
-                    >
-                      Informasi Lebih Lanjut
-                      <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
-                    </a> */}
                   </div>
 
                   {/* Decorative line */}
-                  <div className="absolute bottom-0 left-0 w-0 h-px bg-gradient-to-r from-red-300 to-blue-500 via-purple-500 group-hover:w-full transition-all duration-700"></div>
+                  <div
+                    className={`absolute bottom-0 left-0 h-px bg-gradient-to-r from-red-300 to-blue-500 via-purple-500 transition-all duration-700 ${
+                      isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`}
+                  ></div>
                 </div>
               </div>
             );

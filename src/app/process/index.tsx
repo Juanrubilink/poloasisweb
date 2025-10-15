@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect, useRef, useState } from 'react';
-import { Droplets, Flame, RotateCw, CheckCircle, Settings, PackageCheck, ArrowRight } from 'lucide-react';
+import { Droplets, Flame, RotateCw, CheckCircle, Settings, PackageCheck } from 'lucide-react';
 
 export default function Process() {
   const [isVisible, setIsVisible] = useState(false);

@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
@@ -20,34 +21,34 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a href="/" className="text-2xl font-light tracking-wider text-gray-900 hover:text-gray-600 transition-colors">
+            <Link href="/" className="text-2xl font-light tracking-wider text-gray-900 hover:text-gray-600 transition-colors">
               <span className="font-semibold">IMEX</span>
               <span className="font-extralight">TAMA</span>
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-10">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
                 className="text-sm font-light tracking-wide text-gray-700 hover:text-gray-900 transition-colors relative group"
               >
                 {link.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-px bg-gray-900 transition-all duration-300 group-hover:w-full"></span>
-              </a>
+              </Link>
             ))}
           </div>
 
           {/* CTA Button - Desktop */}
           <div className="hidden md:flex items-center">
-            <a
+            <Link
               href="#contact"
               className="px-6 py-2.5 bg-gray-900 text-white text-sm font-light tracking-wide hover:bg-gray-800 transition-all duration-300"
             >
               Get Quote
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -69,22 +70,22 @@ export default function Navbar() {
       >
         <div className="px-6 py-6 space-y-4">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
               className="block text-base font-light tracking-wide text-gray-700 hover:text-gray-900 transition-colors py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               {link.name}
-            </a>
+            </Link>
           ))}
-          <a
+          <Link
             href="#quote"
             className="block w-full px-6 py-3 bg-gray-900 text-white text-center text-sm font-light tracking-wide hover:bg-gray-800 transition-all duration-300 mt-4"
             onClick={() => setIsMenuOpen(false)}
           >
             Get Quote
-          </a>
+          </Link>
         </div>
       </div>
     </nav>

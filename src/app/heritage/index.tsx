@@ -192,7 +192,7 @@ export default function Heritage() {
             <div className="max-w-3xl mx-auto text-center space-y-6">
               <div className="w-12 h-px bg-gray-400 mx-auto"></div>
               <blockquote className="text-2xl lg:text-3xl font-light text-gray-900 leading-relaxed italic">
-                "Kami tidak hanya membuat komponen, kami membangun warisan keunggulan yang terus berkembang dari generasi ke generasi."
+                &quot;Kami tidak hanya membuat komponen, kami membangun warisan keunggulan yang terus berkembang dari generasi ke generasi.&quot;
               </blockquote>
               <div className="text-sm font-light text-gray-600 tracking-wider">
                 — IMEXTAMA FOUNDER

@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect, useRef, useState } from 'react';
-import { Mail, Phone, MapPin, Send, Clock, Building } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Clock } from 'lucide-react';
 
 export default function Contact() {
   const [isVisible, setIsVisible] = useState(false);
@@ -35,18 +35,18 @@ export default function Contact() {
     };
   }, []);
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+ const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  setFormData({
+    ...formData,
+    [e.target.name]: e.target.value
+  });
+}
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
-  };
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  // Handle form submission
+  console.log('Form submitted:', formData);
+};
 
   const contactInfo = [
     {
@@ -257,44 +257,6 @@ export default function Contact() {
             </div>
           </div>
         </div>
-
-        {/* Bottom CTA Section */}
-        {/* <div className={`transition-all duration-1000 delay-900 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          <div className="relative p-10 lg:p-12 border border-gray-200 bg-white">
-            <div className="max-w-3xl mx-auto text-center space-y-4">
-              <div className="inline-flex items-center justify-center w-14 h-14 bg-gray-900 mb-4">
-                <Building className="text-white" size={28} strokeWidth={1.5} />
-              </div>
-              <h3 className="text-2xl lg:text-3xl font-light text-gray-900 mb-4">
-                Kunjungi Fasilitas Kami
-              </h3>
-              <p className="text-base font-light text-gray-600 leading-relaxed mb-6">
-                Lihat langsung proses manufaktur kami dan diskusikan kebutuhan proyek Anda dengan tim ahli. Kami menyambut kunjungan klien dengan perjanjian terlebih dahulu.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="tel:+622112345678"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-gray-900 text-white text-sm font-light tracking-wide hover:bg-gray-800 transition-all duration-300"
-                >
-                  <Phone size={18} className="mr-2" />
-                  Hubungi Sekarang
-                </a>
-                <a
-                  href="mailto:info@imextama.com"
-                  className="inline-flex items-center justify-center px-8 py-4 border border-gray-300 text-gray-900 text-sm font-light tracking-wide hover:border-gray-900 transition-all duration-300"
-                >
-                  <Mail size={18} className="mr-2" />
-                  Email Kami
-                </a>
-              </div>
-            </div>
-
-            <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-gray-900"></div>
-            <div className="absolute top-0 right-0 w-6 h-6 border-t border-r border-gray-900"></div>
-            <div className="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-gray-900"></div>
-            <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-gray-900"></div>
-          </div>
-        </div> */}
       </div>
 
       {/* Background decoration */}

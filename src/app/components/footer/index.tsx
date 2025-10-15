@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Mail, Phone, MapPin, Facebook, Instagram, ArrowUp, MessageCircle } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -36,10 +37,10 @@ export default function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <a href="/" className="inline-block text-2xl font-light tracking-wider mb-6 hover:opacity-80 transition-opacity">
+            <Link href="/" className="inline-block text-2xl font-light tracking-wider mb-6 hover:opacity-80 transition-opacity">
               <span className="font-semibold">IMEX</span>
               <span className="font-extralight">TAMA</span>
-            </a>
+            </Link>
             <p className="text-sm font-light text-gray-400 leading-relaxed mb-6">
               Menghadirkan solusi manufaktur presisi berkualitas tinggi sejak 1993. Keahlian tradisional bertemu inovasi modern.
             </p>
@@ -62,13 +63,13 @@ export default function Footer() {
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-sm font-light text-gray-400 hover:text-white transition-colors inline-flex items-center group"
                   >
                     <span className="w-0 h-px bg-white group-hover:w-4 transition-all duration-300 mr-0 group-hover:mr-2"></span>
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -97,20 +98,20 @@ export default function Footer() {
               Hubungi Kami
             </h3>
             <div className="space-y-4 mb-6">
-              <a
+              <Link
                 href="tel:+623151503390"
                 className="flex items-center space-x-3 text-sm font-light text-gray-400 hover:text-white transition-colors group"
               >
                 <Phone size={18} strokeWidth={1.5} className="flex-shrink-0" />
                 <span>+62 31 5150 3390</span>
-              </a>
-              <a
+              </Link>
+              <Link
                 href="mailto:admin@poloasis.id"
                 className="flex items-center space-x-3 text-sm font-light text-gray-400 hover:text-white transition-colors group"
               >
                 <Mail size={18} strokeWidth={1.5} className="flex-shrink-0" />
                 <span>admin@poloasis.id</span>
-              </a>
+              </Link>
             </div>
 
             {/* Social Links */}
@@ -122,14 +123,14 @@ export default function Footer() {
                 {socialLinks.map((social) => {
                   const Icon = social.icon;
                   return (
-                    <a
+                    <Link
                       key={social.label}
                       href={social.href}
                       aria-label={social.label}
                       className="w-10 h-10 border border-gray-700 flex items-center justify-center hover:border-white hover:bg-white hover:text-gray-900 transition-all duration-300 group"
                     >
                       <Icon size={18} strokeWidth={1.5} />
-                    </a>
+                    </Link>
                   );
                 })}
               </div>
@@ -145,13 +146,13 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 text-sm font-light text-gray-500">
             <span>© 2025 IMEXTAMA. All rights reserved.</span>
             <div className="flex space-x-4">
-              <a href="#" className="hover:text-gray-300 transition-colors">
+              <Link href="#" className="hover:text-gray-300 transition-colors">
                 Privacy Policy
-              </a>
+              </Link>
               <span className="text-gray-700">|</span>
-              <a href="#" className="hover:text-gray-300 transition-colors">
+              <Link href="#" className="hover:text-gray-300 transition-colors">
                 Terms of Service
-              </a>
+              </Link>
             </div>
           </div>
 
